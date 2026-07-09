@@ -87,7 +87,7 @@ A website owner is no longer optimizing only for Google search rankings or for o
 
 Since ChatGPT appears to remain the largest AI-chatbot channel in many public market-share estimates, a practical website owner may first optimize for ChatGPT-style retrieval behavior, then expand coverage toward Gemini, Perplexity, Claude, and other assistants.
 
-## 6. Additional Findings on ChatGPT Retrieval
+## 5. Additional Findings on ChatGPT Retrieval
 
 A large-scale analysis of ChatGPT retrieval found that the general search index dominates both retrieved volume and citation rate. Around 88% of URLs cited by ChatGPT came directly from standard search results.
 
