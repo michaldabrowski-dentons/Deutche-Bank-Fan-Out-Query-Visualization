@@ -213,17 +213,6 @@ button {
   background: rgba(255, 255, 255, 0.66);
 }
 
-.badge--todo {
-  border-color: var(--gold);
-  color: #8a6413;
-  background: rgba(241, 180, 52, 0.12);
-}
-
-.section--dark .badge--todo {
-  color: var(--gold);
-  background: rgba(241, 180, 52, 0.14);
-}
-
 .badge--illustrative {
   border-color: var(--purple-light);
   color: var(--purple-core);
@@ -770,14 +759,6 @@ button {
   background: var(--gold);
   border-color: var(--gold);
   color: var(--purple-xdark);
-}
-
-.chip .chip__todo {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  opacity: 0.8;
-  display: block;
 }
 
 /* ---------- flow stage: 3 columns bridged by SVG curves ---------- */
@@ -2205,13 +2186,116 @@ button {
 .closing__cta { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
 
 .footer {
-  padding: 34px 24px 44px;
+  padding: 60px 24px 26px;
   background: var(--purple-xdark);
-  color: var(--ink-on-dark-muted);
-  font-size: 0.82rem;
+  color: var(--ink-on-dark-soft);
+  font-size: 0.88rem;
 }
 
-.footer .section__inner { display: flex; flex-direction: column; gap: 8px; }
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1.2fr;
+  gap: 48px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid rgba(246, 242, 250, 0.14);
+}
+
+.footer__heading {
+  margin: 0 0 18px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.footer__logo { height: 30px; width: auto; margin-bottom: 16px; }
+
+.footer__brand p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--ink-on-dark-muted);
+}
+
+.footer__mail {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  font-weight: 700;
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.footer__mail svg { width: 18px; height: 18px; flex: 0 0 auto; }
+
+.footer__mail:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* contact cards: icon disc + name / role / email */
+.footer-contact { display: flex; gap: 14px; align-items: flex-start; }
+
+.footer-contact + .footer-contact { margin-top: 20px; }
+
+.footer-contact__icon {
+  flex: 0 0 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(246, 242, 250, 0.07);
+  border: 1px solid rgba(246, 242, 250, 0.18);
+  color: var(--gold);
+}
+
+.footer-contact__icon svg { width: 18px; height: 18px; }
+
+.footer-contact__body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+
+.footer-contact__body strong { color: #fff; font-size: 0.92rem; }
+
+.footer-contact__badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 8px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  vertical-align: 2px;
+}
+
+.footer-contact__role { font-size: 0.78rem; color: var(--ink-on-dark-muted); }
+
+.footer-contact__body a {
+  font-size: 0.82rem;
+  color: var(--ink-on-dark-soft);
+  text-decoration: none;
+}
+
+.footer-contact__body a:hover { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+
+.footer__legal p {
+  margin: 0 0 12px;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--ink-on-dark-muted);
+}
+
+.footer__legal p:last-child { margin-bottom: 0; }
+
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 22px;
+  font-size: 0.76rem;
+  color: var(--ink-on-dark-muted);
+}
 
 /* ============================================================
    Responsive - must survive a 13" laptop (~1280×800) and degrade
@@ -2241,6 +2325,7 @@ button {
 @media (max-width: 900px) {
   .nav__links a { padding: 8px 8px; font-size: 0.8rem; }
   .role-blocks { grid-template-columns: 1fr; }
+  .footer__grid { grid-template-columns: 1fr; gap: 36px; }
   .recs__detail { padding: 24px 22px 26px; }
   .recs-detail-card__facts { grid-template-columns: 1fr; }
   .recs-group__list { padding-left: 56px; }

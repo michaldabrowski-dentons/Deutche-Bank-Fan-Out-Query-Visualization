@@ -1,5 +1,5 @@
 {
-  "_comment": "Fan-out queries observed in research/report.json. Query texts are verbatim (including typos) - hard rule: only actually observed queries are marked REAL. sourceType = the type of source the query leads to, shown as a branch label.",
+  "_comment": "Fan-out queries observed in Dentons' own research. Query texts are verbatim (including typos) - hard rule: only actually observed queries are marked REAL. sourceType = the type of source the query leads to, shown as a branch label.",
   "models": {
     "gpt": { "label": "ChatGPT", "sub": "GPT-5.5 thinking · przez indeks Bing" },
     "gemini": { "label": "Gemini", "sub": "Gemini 2.5 Flash · przez indeks Google" }
@@ -98,14 +98,6 @@
             { "text": "prawo bankowe unieważnienie kredytu walutowego", "sourceType": "orzecznictwo" }
           ]
         }
-      }
-    },
-    {
-      "id": "jak-wyglada-proces",
-      "label": "Jak wygląda proces unieważnienia kredytu w euro?",
-      "models": {
-        "gpt": { "status": "DO_UZUPELNIENIA", "queries": [] },
-        "gemini": { "status": "DO_UZUPELNIENIA", "queries": [] }
       }
     }
   ]

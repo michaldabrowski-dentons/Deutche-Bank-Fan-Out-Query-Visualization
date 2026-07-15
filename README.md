@@ -3,7 +3,8 @@
 Interaktywny scrollytelling one-pager pokazujący, jak pytania kredytobiorców
 o unieważnienie kredytu w euro przechodzą przez modele AI (fan-out → retrieval →
 cytowanie), gdzie bank traci widoczność i jaki plan działania (30/90/180 dni)
-tę lukę zamyka. Struktura sekcji S0–S8 wg `context/architecture.md`.
+tę lukę zamyka. Struktura sekcji S0–S6 + sekcja zamykająca, wg
+`context/architecture.md` (sekcja S7 Monitoring została usunięta z demo).
 
 ## Uruchomienie
 
@@ -17,48 +18,33 @@ npm run preview   # podgląd builda
 Stack: Vite + vanilla JS, GSAP + ScrollTrigger (animacje), `d3-hierarchy`
 (wyłącznie layout treemapy). Zero backendu — wszystkie dane precomputed.
 
-## Mapa plików danych (do podmiany po researchu)
+## Mapa plików danych
 
-Cała treść danych żyje w `src/data/` — podmiana nie wymaga dotykania logiki:
+Cała treść danych żyje w `src/data/` i pochodzi z researchu własnego Dentons
+(research uznany za kompletny) — edycja nie wymaga dotykania logiki:
 
-| Plik | Zasila | Co podmienić po researchu |
+| Plik | Zasila | Zawartość |
 |---|---|---|
-| `fanout.json` | S2 symulator fan-out | zapytania dla pytania `jak-wyglada-proces` (status `DO_UZUPELNIENIA`); ew. nowe pytania — struktura: `questions[].models.{gpt,gemini}.queries[]` |
-| `sources.json` | S3 treemapa źródeł | `share` (udziały %), domeny kategorii `fora`; wielkość kafla = `domains.length` |
-| `phrases.json` | S4 chmura fraz | wagi/frazy po pełnym benchmarku; wartości Share of Voice |
+| `fanout.json` | S2 symulator fan-out | wyłącznie faktycznie zaobserwowane zapytania, verbatim (łącznie z literówką Gemini „weuro"); struktura: `questions[].models.{gpt,gemini}.queries[]` |
+| `sources.json` | S3 wykres źródeł | domeny per kategoria; wielkość wycinka = `domains.length` (kategorie zerowe: symboliczny wycinek, realna liczba na etykiecie) |
+| `phrases.json` | S4 chmura fraz | wagi = liczba wystąpień frazy w zaobserwowanych zapytaniach fan-out |
 | `engines.json` | S5 karty silników | dane zewnętrzne w `details` (oznaczone „do weryfikacji") |
-| `recommendations.json` | S6 macierz + roadmapa | oceny `impact`/`difficulty` (obecnie translacja ocen słownych z raportu strategicznego, skala 1–5) |
-| `kpi.json` | S7 dashboard | wartości KPI i trend — **całość ilustracyjna z założenia** (mock raportu) |
+| `recommendations.json` | S6 plan działania (master-detail) | oceny `impact`/`difficulty` — translacja ocen słownych z raportu strategicznego, skala 1–5 |
 | `copy.json` | mikrocopy przy wizualizacjach | insighty modeli, etykiety |
 
 Statyczna treść sekcji (nagłówki, leady, disclaimery) jest w `index.html` —
 markup bez logiki, edytowalny bez JS.
 
-## Lista placeholderów (DO_UZUPELNIENIA / ilustracyjne)
+## Elementy ilustracyjne (widocznie oznaczone na stronie)
 
-Wszystkie są **widocznie oznaczone na stronie**:
-
-1. **S0 hero — liczba kotwicząca** `[ DO UZUPEŁNIENIA ]` (skala zapytań do
-   chatbotów lub liczba spraw sądowych EUR; podać ze źródłem i datą).
-2. **S1 — cytat odpowiedzi chatbota** — badge „przykład ilustracyjny — nie jest
+1. **S1 — cytat odpowiedzi chatbota** — badge „przykład ilustracyjny — nie jest
    cytatem z modelu".
-3. **S2 — pytanie „Jak wygląda proces unieważnienia kredytu w euro?"** — status
-   `DO_UZUPELNIENIA`, etykieta na chipie i komunikat na kanwie. Pozostałe trzy
-   pytania mają wyłącznie faktycznie zaobserwowane zapytania (research/report.json),
-   verbatim — łącznie z literówką Gemini „weuro".
-4. **S3 — udziały procentowe kategorii źródeł** — brak (celowo); wielkość kafla =
-   liczba unikalnych domen z próbki researchu (adnotacja pod treemapą). Kategoria
-   „Fora" — domeny do uzupełnienia.
-5. **S3 — dane Ahrefs (88% / 67,8% / 1,93%)** — podane ze źródłem i linkiem;
+2. **S3 — dane Ahrefs (88% / 67,8% / 1,93%)** — podane ze źródłem i linkiem;
    oznaczone „do weryfikacji przed prezentacją".
-6. **S4 — Share of Voice** — badge „do uzupełnienia po researchu"; asymetria
-   pokazana jakościowo (wagi = realne liczby wystąpień fraz w zapytaniach fan-out).
-7. **S5 — liczby z badań zewnętrznych w akordeonach** (75% TOP12, chunki 134–167
+3. **S5 — liczby z badań zewnętrznych w akordeonach** (75% TOP12, chunki 134–167
    słów) — oznaczone „do weryfikacji".
-8. **S6 — pozycje na macierzy** — numeryczna translacja ocen słownych z raportu
-   strategicznego (adnotacja pod macierzą).
-9. **S7 — cały dashboard KPI** — badge „Przykładowy widok raportu — wartości
-   ilustracyjne"; każdy kafel dodatkowo z dopiskiem „wartość ilustracyjna".
+4. **S6 — oceny wpływu i trudności** — numeryczna translacja ocen słownych
+   z raportu strategicznego.
 
 ## Zasady treści (krytyczne)
 

@@ -1,6 +1,6 @@
 {
-  "_comment": "Phrase cloud for S4. weight = approximate number of occurrences of the phrase across all observed fan-out queries in research/report.json (computed from real query texts, not invented). tone: claim = pro-lawsuit framing, neutral = factual/regulatory framing.",
-  "methodNote": "Wielkość frazy = liczba wystąpień w zaobserwowanych zapytaniach fan-out (research/report.json). Nie jest to jeszcze pomiar Share of Voice.",
+  "_comment": "Phrase cloud for S4. weight = approximate number of occurrences of the phrase across all fan-out queries observed in Dentons' own research (computed from real query texts, not invented). tone: claim = pro-lawsuit framing, neutral = factual/regulatory framing.",
+  "methodNote": "Wielkość frazy = liczba wystąpień w zaobserwowanych zapytaniach fan-out (research własny Dentons). Nie jest to jeszcze pomiar Share of Voice.",
   "phrases": [
     { "text": "unieważnienie kredytu w euro", "weight": 28, "tone": "claim" },
     { "text": "klauzule abuzywne", "weight": 11, "tone": "neutral" },

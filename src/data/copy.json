@@ -2,8 +2,6 @@
   "_comment": "Microcopy rendered by JS (strings that live next to data-driven visuals). Static section copy lives in index.html - both are content files editable without touching logic.",
   "fanout": {
     "centerLabel": "Pytanie klienta",
-    "todoBadge": "przykładowe, do uzupełnienia po researchu",
-    "todoMessage": "Zapytania fan-out dla tego pytania zostaną dodane po domknięciu researchu. Pokazujemy wyłącznie faktycznie zaobserwowane zapytania.",
     "insights": {
       "gpt": "ChatGPT szuka „urzędowo”: kieruje własne zapytania ku UOKiK, Rzecznikowi Finansowemu i orzecznictwu TSUE. Aby być widocznym w tej przestrzeni, treść banku musi wyglądać wiarygodnie prawnie: z autorami, źródłami i sygnaturami.",
       "gemini": "Gemini szuka „poradnikowo”: pyta o wady i zalety, koszty, skutki i opinie. Te wyszukiwania wygrywają dziś treści kancelarii i serwisów odszkodowawczych. To drugie, odrębne pole optymalizacji. Ta sama strona nie wygra obu automatycznie."
