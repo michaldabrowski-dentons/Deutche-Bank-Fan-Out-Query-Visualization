@@ -60,8 +60,12 @@ export function initSourcesMap(sourcesData, copy) {
 
   const slicesGroup = svgEl('g', { class: 'donut__slices' });
   const labelsGroup = svgEl('g', { class: 'donut__labels' });
+  // static, invisible hit areas on top: hover must be detected on geometry
+  // that never moves, or the exploding slice un-hovers itself (flicker loop)
+  const hitGroup = svgEl('g', { class: 'donut__hits' });
   svg.appendChild(slicesGroup);
   svg.appendChild(labelsGroup);
+  svg.appendChild(hitGroup);
   container.prepend(svg);
 
   const slices = [];
@@ -78,14 +82,23 @@ export function initSourcesMap(sourcesData, copy) {
       class: 'donut-slice',
       d: arcPath(R_INNER, R_OUTER, a0, a1),
       fill: cat.color,
-      tabindex: '0',
-      'aria-label': `${cat.label}: ${cat.countLabel}`,
     });
     path.dataset.category = cat.id;
     // hover offset along the slice's mid-angle, consumed by CSS
     path.style.setProperty('--ex', `${(Math.cos(mid) * EXPLODE).toFixed(2)}px`);
     path.style.setProperty('--ey', `${(Math.sin(mid) * EXPLODE).toFixed(2)}px`);
     slicesGroup.appendChild(path);
+
+    // interactive twin: same wedge, slightly widened so it also covers the
+    // exploded position; it never transforms, so hover state stays stable
+    const hit = svgEl('path', {
+      class: 'donut-hit',
+      d: arcPath(Math.max(R_INNER - 10, 0), R_OUTER + EXPLODE + 10, a0, a1),
+      tabindex: '0',
+      'aria-label': `${cat.label}: ${cat.countLabel}`,
+    });
+    hit.dataset.category = cat.id;
+    hitGroup.appendChild(hit);
 
     // count label inside slices wide enough to hold it
     if (a1 - a0 > 0.4) {
@@ -126,7 +139,7 @@ export function initSourcesMap(sourcesData, copy) {
       labelsGroup.appendChild(text);
     }
 
-    slices.push({ cat, path });
+    slices.push({ cat, path, hit });
   }
 
   /* ---------- donut hole: default state + dynamic tooltip ---------- */
@@ -289,7 +302,7 @@ export function initSourcesMap(sourcesData, copy) {
     });
   }
 
-  for (const { cat, path } of slices) bindInteractions(path, cat.id);
+  for (const { cat, hit } of slices) bindInteractions(hit, cat.id);
   for (const [catId, item] of legendItems) bindInteractions(item, catId);
 
   /* ---------- entrance animation ---------- */

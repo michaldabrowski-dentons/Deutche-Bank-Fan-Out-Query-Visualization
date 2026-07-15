@@ -1036,10 +1036,19 @@ button {
   overflow: visible;
 }
 
+/* visual slice never receives the pointer - hover lives on the static
+   .donut-hit overlay, so the explode transform can't un-hover itself */
 .donut-slice {
-  cursor: pointer;
+  pointer-events: none;
   filter: drop-shadow(0 4px 10px rgba(60, 16, 83, 0.18));
   transition: transform 0.28s var(--ease-out), opacity 0.28s var(--ease-out);
+}
+
+/* invisible, motionless hit areas covering the slice + its exploded position */
+.donut-hit {
+  fill: transparent;
+  stroke: none;
+  cursor: pointer;
   outline: none;
 }
 
