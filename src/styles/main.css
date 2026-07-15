@@ -315,6 +315,7 @@ button {
 
 /* ---------- decorative ChatGPT-style prompt bar ---------- */
 
+/* clickable: the prompt bar is the story's entry point (scrolls to S1) */
 .chat-mock {
   display: flex;
   align-items: center;
@@ -326,7 +327,21 @@ button {
   border-radius: 999px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
   user-select: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out),
+    background 0.3s var(--ease-out);
 }
+
+.chat-mock:hover,
+.chat-mock:focus-visible {
+  background: #3a3a3a;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+}
+
+.chat-mock:hover .chat-mock__send { background: var(--gold); }
 
 .chat-mock__icon {
   display: inline-flex;

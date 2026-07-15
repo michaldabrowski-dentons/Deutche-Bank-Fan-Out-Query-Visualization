@@ -39,9 +39,9 @@
       <div class="hero__inner">
         <h1 class="hero__title">Zanim klient wniósł pozew, <em>zapytał AI</em></h1>
 
-        <!-- Decorative ChatGPT-style prompt bar (non-interactive mockup) -->
-        <div class="chat-mock" aria-hidden="true">
-          <span class="chat-mock__icon">
+        <!-- ChatGPT-style prompt bar; clicking it starts the story (S1) -->
+        <a class="chat-mock" href="#problem" aria-label="Przejdź do sekcji: Problem">
+          <span class="chat-mock__icon" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="2" stroke-linecap="round">
               <path d="M12 5v14M5 12h14" />
@@ -50,7 +50,7 @@
           <span class="chat-mock__text">
             <span id="hero-typewriter"></span><span class="chat-mock__cursor">|</span>
           </span>
-          <span class="chat-mock__right">
+          <span class="chat-mock__right" aria-hidden="true">
             <span class="chat-mock__icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -65,7 +65,7 @@
               </svg>
             </span>
           </span>
-        </div>
+        </a>
 
         <div class="hero__ctas">
           <a class="btn btn--gold" href="#mechanizm">Zobacz, jak AI odpowiada</a>
