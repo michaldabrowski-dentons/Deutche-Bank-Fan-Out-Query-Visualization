@@ -291,9 +291,13 @@ export function initRecommendations(recData) {
 
     const next = buildDetail(action);
 
-    /* stacked layout: the panel lives below the list - bring it on screen */
-    if (!instant && stacked.matches) {
-      detail?.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+    /* bring the panel on screen: below the list when stacked, or nudged
+       back into view on desktop when it parked past the viewport edge */
+    if (!instant) {
+      detail?.scrollIntoView({
+        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+        block: stacked.matches ? 'start' : 'nearest',
+      });
     }
 
     if (prefersReducedMotion || instant || !stage.firstElementChild) {
@@ -304,6 +308,9 @@ export function initRecommendations(recData) {
 
     /* outgoing drifts up and fades; incoming rises in with a spring */
     swapTween?.kill();
+    // rapid re-selects can interrupt the previous swap before its onComplete
+    // removed the old card - drop any card still mid-exit right away
+    stage.querySelectorAll('.is-leaving').forEach((el) => el.remove());
     const previous = stage.firstElementChild;
     previous.classList.add('is-leaving'); // absolute overlay: both states share the stage
     stage.appendChild(next);

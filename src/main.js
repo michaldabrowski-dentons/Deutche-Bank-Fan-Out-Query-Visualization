@@ -5,7 +5,6 @@ import sourcesData from './data/sources.json';
 import phrasesData from './data/phrases.json';
 import enginesData from './data/engines.json';
 import recData from './data/recommendations.json';
-import kpiData from './data/kpi.json';
 import copy from './data/copy.json';
 
 import { initNav } from './sections/nav.js';
@@ -16,14 +15,12 @@ import { initSourcesMap } from './sections/sourcesMap.js';
 import { initPhraseCloud } from './sections/phraseCloud.js';
 import { initEngines } from './sections/engines.js';
 import { initRecommendations } from './sections/recommendations.js';
-import { initDashboard } from './sections/dashboard.js';
 
 initNav();
 initHero(copy);
 initJourney();
 initEngines(enginesData);
 initRecommendations(recData);
-initDashboard(kpiData);
 initQueryFlow(fanoutData, copy);
 initSourcesMap(sourcesData, copy);
 initPhraseCloud(phrasesData);
